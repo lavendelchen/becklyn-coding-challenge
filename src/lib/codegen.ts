@@ -1,0 +1,24 @@
+import { resolve } from 'path';
+import * as dotenv from 'dotenv';
+import { CodegenConfig } from '@graphql-codegen/cli';
+
+dotenv.config();
+
+const endpoint = process.env.CONTENTFUL_ENDPOINT;
+const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+
+const config: CodegenConfig = {
+  schema: `${endpoint}?access_token=${accessToken}`,
+  documents: "src/lib/api.ts",
+  generates: {
+    [resolve(__dirname, '../types/graphql.ts')]: {
+      plugins: [
+        "typescript",
+        "typescript-operations",
+        "typescript-react-apollo"
+      ]
+    }
+  }
+};
+
+export default config;

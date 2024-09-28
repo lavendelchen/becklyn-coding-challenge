@@ -24,8 +24,7 @@
   --gray-800:     #4B4B4B;
   --gray-900:     #2C2C2C;
 
-  --background: var(--gray-800);
-  --foreground: var(--primary-100);
+  --black-text:   #292929;
 
   /* Fonts */
   --display-2xl-regular:  300 72px/90px var(--font-figtree), "Arial", sans-serif;
@@ -59,8 +58,8 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--black-text);
+  background: var(--gray-75);
   font-family: var(--font-figtree), Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

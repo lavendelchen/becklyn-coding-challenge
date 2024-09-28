@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, create a `.env` file using `.env.sample` as the model, giving the access token for Contentful.
+First, create a `.env` file using `.env.sample` as the model, giving the API endpoint for Contentful.
 
 Then, run the development server:
 
