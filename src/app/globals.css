@@ -12,6 +12,9 @@
   --primary-800:  #078699;
   --primary-900:  #007187;
 
+  --secondary:    #004B44;
+  --tertiary:     #D94841;
+
   --gray-50:      #FFFFFF;
   --gray-75:      #FAFAFA;
   --gray-100:     #F5F5F5;
@@ -32,23 +35,23 @@
   --display-xl-regular:   300 60px/72px var(--font-figtree), "Arial", sans-serif;
   --display-xl-medium:    700 60px/72px var(--font-figtree), "Arial", sans-serif;
   --display-lg-regular:   300 48px/60px var(--font-figtree), "Arial", sans-serif;
-  --display-lg-medium:    500 48px/60px var(--font-figtree), "Arial", sans-serif;
+  --display-lg-medium:    700 48px/60px var(--font-figtree), "Arial", sans-serif;
   --display-md-regular:   300 36px/44px var(--font-figtree), "Arial", sans-serif;
-  --display-md-medium:    500 36px/44px var(--font-figtree), "Arial", sans-serif;
+  --display-md-medium:    700 36px/44px var(--font-figtree), "Arial", sans-serif;
   --display-sm-regular:   300 30px/38px var(--font-figtree), "Arial", sans-serif;
-  --display-sm-medium:    500 30px/38px var(--font-figtree), "Arial", sans-serif;
+  --display-sm-medium:    700 30px/38px var(--font-figtree), "Arial", sans-serif;
   --display-xs-regular:   300 24px/32px var(--font-figtree), "Arial", sans-serif;
-  --display-xs-medium:    500 24px/32px var(--font-figtree), "Arial", sans-serif;
+  --display-xs-medium:    600 24px/32px var(--font-figtree), "Arial", sans-serif;
   --text-xl-regular:      300 20px/30px var(--font-figtree), "Arial", sans-serif;
-  --text-xl-medium:       500 20px/30px var(--font-figtree), "Arial", sans-serif;
+  --text-xl-medium:       600 20px/30px var(--font-figtree), "Arial", sans-serif;
   --text-lg-regular:      300 18px/28px var(--font-figtree), "Arial", sans-serif;
-  --text-lg-medium:       500 18px/28px var(--font-figtree), "Arial", sans-serif;
+  --text-lg-medium:       600 18px/28px var(--font-figtree), "Arial", sans-serif;
   --text-md-regular:      300 16px/24px var(--font-figtree), "Arial", sans-serif;
-  --text-md-medium:       500 16px/24px var(--font-figtree), "Arial", sans-serif;
+  --text-md-medium:       600 16px/24px var(--font-figtree), "Arial", sans-serif;
   --text-sm-regular:      300 14px/20px var(--font-figtree), "Arial", sans-serif;
-  --text-sm-medium:       500 14px/20px var(--font-figtree), "Arial", sans-serif;
+  --text-sm-medium:       600 14px/20px var(--font-figtree), "Arial", sans-serif;
   --text-xs-regular:      300 12px/18px var(--font-figtree), "Arial", sans-serif;
-  --text-xs-medium:       500 12px/18px var(--font-figtree), "Arial", sans-serif;
+  --text-xs-medium:       600 12px/18px var(--font-figtree), "Arial", sans-serif;
 }
 
 html,

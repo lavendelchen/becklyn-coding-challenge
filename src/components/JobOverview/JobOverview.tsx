@@ -38,8 +38,8 @@ export default function JobOverview() {
 
   return (
     <div className={styles.jobOverview}>
-      <h6>{jobCount} offene Stellen bei CreditPlus</h6>
-      <h1>Hier beginnt deine Zukunft</h1>
+      <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
+      <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
     </div>
   );
 }
