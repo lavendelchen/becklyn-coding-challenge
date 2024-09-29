@@ -49,6 +49,11 @@
   padding: 10px 14px;
 }
 
+.selectOption:hover,
+.selectOption:global(.base--highlighted) {
+  color: var(--primary-700);
+}
+
 .selectOption:global(.base--selected) {
   background: var(--primary-50);
   color: var(--primary-700);
