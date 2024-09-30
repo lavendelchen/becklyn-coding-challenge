@@ -8,22 +8,14 @@ interface JobCardProps {
     title?: string | null;
   } | null | undefined,
   title: string | null | undefined,
-  locations: {
-    __typename?: "JobLocationsCollection";
-    total: number;
-    items: Array<{
-        __typename?: "ContentTypeLocation";
-        city?: string | null;
-    } | null>;
-  } | null | undefined,
-  types: {
-    __typename?: "JobTypesCollection";
-    total: number;
-    items: Array<{
-        __typename?: "JobType";
-        title?: string | null;
-    } | null>;
-  } | null | undefined
+  locations: ({
+    __typename?: "ContentTypeLocation";
+    city?: string | null;
+  } | null)[] | undefined,
+  types: ({
+    __typename?: "JobType";
+    title?: string | null;
+  } | null)[] | undefined
 }
 
 export default function JobCard({
@@ -42,6 +34,14 @@ export default function JobCard({
         href="/"
       >arrow_outward</Link>
       <h3 className={styles.title}>{title}</h3>
+      <div className={styles.location}>
+        {locations?.map((location, index) => (
+          <span key={index}>
+            {location?.city}
+            {index < locations.length - 1 && ', '}
+          </span>
+        ))}
+      </div>
     </li>
   )
 }

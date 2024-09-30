@@ -33,3 +33,7 @@
   font: var(--text-lg-medium);
   line-height: 26px;
 }
+
+.location {
+  grid-area: location;
+}

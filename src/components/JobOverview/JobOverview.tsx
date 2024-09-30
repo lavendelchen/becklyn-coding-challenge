@@ -66,8 +66,8 @@ export default function JobOverview() {
             key={index}
             department={job?.department}
             title={job?.title}
-            locations={job?.locationsCollection}
-            types={job?.typesCollection}
+            locations={job?.locationsCollection?.items}
+            types={job?.typesCollection?.items}
           />
         ))}
         </ul>
