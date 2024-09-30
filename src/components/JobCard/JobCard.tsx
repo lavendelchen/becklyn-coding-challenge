@@ -1,5 +1,5 @@
 import styles from "./JobCard.module.css";
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 interface JobCardProps {
   key: number;
@@ -33,20 +33,15 @@ export default function JobCard({
   locations,
   types
 }: JobCardProps) {
-  const router = useRouter();
 
   return (
     <li className={styles.jobCard} key={key}>
-      <h5 className={styles.jobHeader}>
-        {department?.title}
-      </h5>
-      <span
-          className="material-symbols-outlined"
-          onClick={() =>  router.push('/')}
-        > 
-          arrow_outward
-        </span>
-      <h3 className={styles.jobTitle}>{title}</h3>
+      <h5 className={styles.department}>{department?.title}</h5>
+      <Link
+        className={`${styles.link} material-symbols-outlined`}
+        href="/"
+      >arrow_outward</Link>
+      <h3 className={styles.title}>{title}</h3>
     </li>
   )
 }

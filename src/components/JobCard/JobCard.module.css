@@ -9,23 +9,27 @@
     "department department  link"
     "title      title       ."
     "location   type        .";
+  column-gap: 24px;
 }
 
-.jobHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.department {
+  grid-area: department;
   color: var(--primary-600);
   font: var(--text-sm-medium);
 }
 
-.jobHeader :global(.material-symbols-outlined) {
+.link {
+  grid-area: link;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   color: var(--primary-600);
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
 }
 
-.jobTitle {
+.title {
+  grid-area: title;
   font: var(--text-lg-medium);
   line-height: 26px;
 }
