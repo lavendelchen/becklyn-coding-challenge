@@ -2,9 +2,16 @@
 
 import styles from "./JobOverview.module.css";
 import { useQuery } from "@apollo/client";
-import { InitialJobsQuery, InitialJobsQueryVariables } from "@/types/graphql";
+import {
+  InitialJobsQuery,
+  InitialJobsQueryVariables,
+  Job,
+  JobItems,
+  Maybe
+} from "@/types/graphql";
 import { INITIAL_JOBS } from "@/lib/query";
 import JobFilter from "../JobSelect/JobFilter";
+import JobCard from "../JobCard/JobCard";
 
 export default function JobOverview() {
   const initialJobsVariables = {
@@ -25,6 +32,7 @@ export default function JobOverview() {
     },
   }
   let jobCount = 0;
+  let jobs: JobItems = [];
 
   const { loading, error, data } = useQuery<InitialJobsQuery, InitialJobsQueryVariables>(INITIAL_JOBS, {
     variables: initialJobsVariables
@@ -33,19 +41,37 @@ export default function JobOverview() {
   if (error)
     console.dir(error, { depth: null, color: true})
 
-  if (data?.jobCollection)
+  if (data?.jobCollection) {
     jobCount = data.jobCollection.total;
+    jobs = data.jobCollection.items;
+  }
 
 
   return (
-    <div className={styles.jobOverview}>
-      <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
-      <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
-      <div className={styles.filters}>
-        {Array.from({ length: 3 }, (_, index) => (
-          <JobFilter />
-        ))}
+    <>
+      <div className={styles.jobOverviewHeader}>
+        <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
+        <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
+        <div className={styles.filters}>
+          {Array.from({ length: 3 }, (_, index) => (
+            <JobFilter />
+          ))}
+        </div>
       </div>
-    </div>
+      <div className={styles.jobOverviewBody}>
+        <h2 className={styles.bodyHeading}>Aktuelle Jobangebote</h2>
+        <ul className={styles.jobsList}>
+        {jobs.map((job, index) => (
+          <JobCard
+            key={index}
+            department={job?.department}
+            title={job?.title}
+            locations={job?.locationsCollection}
+            types={job?.typesCollection}
+          />
+        ))}
+        </ul>
+      </div>
+    </>
   );
 }

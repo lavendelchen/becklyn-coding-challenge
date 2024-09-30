@@ -50,7 +50,8 @@
   --display-md-regular:   300 36px/44px var(--font-figtree), "Arial", sans-serif;
   --display-md-medium:    700 36px/44px var(--font-figtree), "Arial", sans-serif;
   --display-sm-regular:   300 30px/38px var(--font-figtree), "Arial", sans-serif;
-  --display-sm-medium:    700 30px/38px var(--font-figtree), "Arial", sans-serif;
+  --display-sm-medium:    600 30px/38px var(--font-figtree), "Arial", sans-serif;
+  --display-sm-bold:      700 30px/38px var(--font-figtree), "Arial", sans-serif;
   --display-xs-regular:   300 24px/32px var(--font-figtree), "Arial", sans-serif;
   --display-xs-medium:    600 24px/32px var(--font-figtree), "Arial", sans-serif;
   --text-xl-regular:      300 20px/30px var(--font-figtree), "Arial", sans-serif;

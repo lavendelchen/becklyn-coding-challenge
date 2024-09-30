@@ -1,13 +1,18 @@
-.jobOverview {
+.jobOverviewHeader,
+.jobOverviewBody {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   column-gap: 10px;
-  --page-margin: 16px;
-  margin-left: var(--page-margin);
-  margin-right: var(--page-margin);
-  margin-top: 80px;
-  /* margin-bottom: 80px; */
+  --page-padding: 16px;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+  padding-top: 80px;
+  padding-bottom: 60px;
+}
+
+.jobOverviewBody {
+  background: var(--gray-50);
 }
 
 .subHeading {
@@ -20,7 +25,7 @@
 .heading {
   grid-column: span 4;
   text-align: center;
-  font: var(--display-sm-medium);
+  font: var(--display-sm-bold);
   color: var(--secondary);
 }
 
@@ -31,4 +36,20 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.bodyHeading {
+  grid-column: span 4;
+  text-align: center;
+  color: var(--secondary);
+  font: var(--display-sm-medium);
+}
+
+.jobsList {
+  grid-column: span 4;
+  margin-top: 24px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }

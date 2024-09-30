@@ -1,0 +1,31 @@
+.jobCard {
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: auto auto auto;
+  grid-template-areas:
+    "department department  link"
+    "title      title       ."
+    "location   type        .";
+}
+
+.jobHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--primary-600);
+  font: var(--text-sm-medium);
+}
+
+.jobHeader :global(.material-symbols-outlined) {
+  color: var(--primary-600);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.jobTitle {
+  font: var(--text-lg-medium);
+  line-height: 26px;
+}

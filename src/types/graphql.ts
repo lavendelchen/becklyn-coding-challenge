@@ -37455,6 +37455,31 @@ export type InitialJobsQueryVariables = Exact<{
   where?: InputMaybe<JobFilter>;
 }>;
 
+export type JobItems = Array<{
+  __typename?: 'Job',
+  name?: string | null,
+  title?: string | null,
+  department?: {
+    __typename?: 'JobDepartment',
+    title?: string | null
+  } | null,
+  locationsCollection?: {
+    __typename?: 'JobLocationsCollection',
+    total: number,
+    items: Array<{
+      __typename?: 'ContentTypeLocation',
+      city?: string | null
+    } | null>
+  } | null,
+  typesCollection?: {
+    __typename?: 'JobTypesCollection',
+    total: number,
+    items: Array<{
+      __typename?: 'JobType',
+      title?: string | null
+    } | null>
+  } | null
+} | null>
 
 export type InitialJobsQuery = { __typename?: 'Query', jobCollection?: { __typename?: 'JobCollection', total: number, items: Array<{ __typename?: 'Job', name?: string | null, title?: string | null, department?: { __typename?: 'JobDepartment', title?: string | null } | null, locationsCollection?: { __typename?: 'JobLocationsCollection', total: number, items: Array<{ __typename?: 'ContentTypeLocation', city?: string | null } | null> } | null, typesCollection?: { __typename?: 'JobTypesCollection', total: number, items: Array<{ __typename?: 'JobType', title?: string | null } | null> } | null } | null> } | null };
 
