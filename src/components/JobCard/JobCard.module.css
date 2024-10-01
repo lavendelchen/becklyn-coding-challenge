@@ -1,4 +1,5 @@
 .jobCard {
+  width: 100%;
   border: 1px solid var(--gray-200);
   border-radius: 16px;
   padding: 24px;
@@ -8,23 +9,29 @@
   grid-template-areas:
     "department department  link"
     "title      title       ."
-    "location   type        .";
-  column-gap: 24px;
+    "location   type        type";
+}
+
+.jobCard > * {
+  min-width: 0;
+  min-height: 0;
+  overflow-wrap: break-word;
 }
 
 .department {
   grid-area: department;
   color: var(--primary-600);
   font: var(--text-sm-medium);
+  margin-right: 24px;
 }
 
 .link {
   grid-area: link;
+  justify-self: right;
+  width: 20px;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  color: var(--primary-600);
-  font-size: 18px;
+  justify-content: right;
+  align-items: top;
   cursor: pointer;
 }
 
@@ -32,8 +39,37 @@
   grid-area: title;
   font: var(--text-lg-medium);
   line-height: 26px;
+  margin-bottom: 8px;
 }
 
 .location {
   grid-area: location;
+  margin-right: 24px;
+}
+
+.type {
+  grid-area: type;
+}
+
+.location,
+.type {
+  color: var(--gray-700);
+  font: var(--text-md-regular);
+  display: flex;
+  column-gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.location svg,
+.type svg {
+  margin-top: 3px;
+}
+
+.groupItems {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comma {
+  margin-right: 4px;
 }

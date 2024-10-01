@@ -1,0 +1,9 @@
+.linkIcon {
+  fill: var(--primary-600);
+  height: 9px;
+}
+
+.jobInfoIcon {
+  fill: var(--gray-700);
+  height: 18px;
+}

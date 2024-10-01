@@ -1,3 +1,8 @@
+import {
+  LinkIcon,
+  LocationIcon,
+  TypeIcon
+} from "./icons/icons";
 import styles from "./JobCard.module.css";
 import Link from "next/link";
 
@@ -25,22 +30,40 @@ export default function JobCard({
   locations,
   types
 }: JobCardProps) {
-
   return (
     <li className={styles.jobCard} key={key}>
       <h5 className={styles.department}>{department?.title}</h5>
-      <Link
-        className={`${styles.link} material-symbols-outlined`}
-        href="/"
-      >arrow_outward</Link>
+      <Link className={styles.link} href="/">
+        <LinkIcon />
+      </Link>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.location}>
+        <LocationIcon />
+        <span className={styles.groupItems}>
         {locations?.map((location, index) => (
-          <span key={index}>
+          <div key={index}>
             {location?.city}
-            {index < locations.length - 1 && ', '}
-          </span>
+            {
+              index < locations.length - 1 &&
+              <span className={styles.comma}>,</span>
+            }
+          </div>
         ))}
+        </span>
+      </div>
+      <div className={styles.type}>
+        <TypeIcon />
+        <span className={styles.groupItems}>
+        {types?.map((type, index) => (
+          <div key={index}>
+            {type?.title}
+            {
+              index < types.length - 1 &&
+              <span className={styles.comma}>,</span>
+            }
+          </div>
+        ))}
+        </span>
       </div>
     </li>
   )

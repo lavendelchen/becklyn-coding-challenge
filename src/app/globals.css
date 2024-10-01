@@ -90,3 +90,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+svg {
+  flex-shrink: 0;
+}
+
