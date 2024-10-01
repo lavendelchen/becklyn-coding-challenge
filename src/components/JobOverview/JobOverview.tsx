@@ -10,7 +10,7 @@ import {
   Maybe
 } from "@/types/graphql";
 import { INITIAL_JOBS } from "@/lib/query";
-import JobFilter from "../JobSelect/JobFilter";
+import JobFilter from "../JobFilter/JobFilter";
 import JobCard from "../JobCard/JobCard";
 
 export default function JobOverview() {
