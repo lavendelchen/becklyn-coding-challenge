@@ -5,13 +5,12 @@ import { useQuery } from "@apollo/client";
 import {
   InitialJobsQuery,
   InitialJobsQueryVariables,
-  Job,
-  JobItems,
-  Maybe
+  JobItems
 } from "@/types/graphql";
 import { INITIAL_JOBS } from "@/lib/query";
 import JobFilter from "../JobFilter/JobFilter";
 import JobCard from "../JobCard/JobCard";
+import Pagination from "../Pagination/Pagination"
 
 export default function JobOverview() {
   const initialJobsVariables = {
@@ -46,7 +45,6 @@ export default function JobOverview() {
     jobs = data.jobCollection.items;
   }
 
-
   return (
     <>
       <div className={styles.jobOverviewHeader}>
@@ -71,6 +69,7 @@ export default function JobOverview() {
           />
         ))}
         </ul>
+        <Pagination count={50} page={30} onPageChange={() => {}}/>
       </div>
     </>
   );

@@ -27,7 +27,7 @@
   color: var(--gray-900);
 }
 
-.select span.material-symbols-outlined {
+.select span:global(.material-symbols-outlined) {
   color: #272727;
 }
 
