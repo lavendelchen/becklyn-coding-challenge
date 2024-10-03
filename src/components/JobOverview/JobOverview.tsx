@@ -1,21 +1,26 @@
 "use client";
 
 import styles from "./JobOverview.module.css";
+import { useState } from "react";
 import { useQuery } from "@apollo/client";
 import {
-  InitialJobsQuery,
-  InitialJobsQueryVariables,
+  JobsQuery,
+  JobsQueryVariables,
   JobItems
 } from "@/types/graphql";
-import { INITIAL_JOBS } from "@/lib/query";
+import { JOBS_QUERY } from "@/lib/query";
 import JobFilter from "../JobFilter/JobFilter";
 import JobCard from "../JobCard/JobCard";
 import Pagination from "../Pagination/Pagination"
 
+const PAGINATION_LIMIT = 5;
+
 export default function JobOverview() {
-  const initialJobsVariables = {
-    "limit": 10,
-    "skip": null,
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const jobsVariables = {
+    "limit": PAGINATION_LIMIT,
+    "skip": PAGINATION_LIMIT * (currentPage - 1),
     "locale": "de",
     "where": {
       "available": true,
@@ -30,19 +35,26 @@ export default function JobOverview() {
       }
     },
   }
-  let jobCount = 0;
-  let jobs: JobItems = [];
 
-  const { loading, error, data } = useQuery<InitialJobsQuery, InitialJobsQueryVariables>(INITIAL_JOBS, {
-    variables: initialJobsVariables
+  const { loading, error, data } = useQuery<JobsQuery, JobsQueryVariables>(JOBS_QUERY, {
+    variables: jobsVariables
   })
 
   if (error)
     console.dir(error, { depth: null, color: true})
 
+  let jobCount = 0;
+  let jobs: JobItems = [];
+  let pagesCount = 0;
+
   if (data?.jobCollection) {
     jobCount = data.jobCollection.total;
     jobs = data.jobCollection.items;
+    pagesCount = Math.ceil(jobCount / PAGINATION_LIMIT);
+  }
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+    setCurrentPage(newPage)
   }
 
   return (
@@ -69,7 +81,7 @@ export default function JobOverview() {
           />
         ))}
         </ul>
-        <Pagination count={50} page={49} onPageChange={() => {}}/>
+        <Pagination count={pagesCount} page={currentPage} onPageChange={handlePageChange}/>
       </div>
     </>
   );

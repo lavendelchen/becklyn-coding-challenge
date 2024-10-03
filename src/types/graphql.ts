@@ -37448,7 +37448,7 @@ export type CfsocialsMultiTypeNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type InitialJobsQueryVariables = Exact<{
+export type JobsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -37481,11 +37481,11 @@ export type JobItems = Array<{
   } | null
 } | null>
 
-export type InitialJobsQuery = { __typename?: 'Query', jobCollection?: { __typename?: 'JobCollection', total: number, items: Array<{ __typename?: 'Job', name?: string | null, title?: string | null, department?: { __typename?: 'JobDepartment', title?: string | null } | null, locationsCollection?: { __typename?: 'JobLocationsCollection', total: number, items: Array<{ __typename?: 'ContentTypeLocation', city?: string | null } | null> } | null, typesCollection?: { __typename?: 'JobTypesCollection', total: number, items: Array<{ __typename?: 'JobType', title?: string | null } | null> } | null } | null> } | null };
+export type JobsQuery = { __typename?: 'Query', jobCollection?: { __typename?: 'JobCollection', total: number, items: Array<{ __typename?: 'Job', name?: string | null, title?: string | null, department?: { __typename?: 'JobDepartment', title?: string | null } | null, locationsCollection?: { __typename?: 'JobLocationsCollection', total: number, items: Array<{ __typename?: 'ContentTypeLocation', city?: string | null } | null> } | null, typesCollection?: { __typename?: 'JobTypesCollection', total: number, items: Array<{ __typename?: 'JobType', title?: string | null } | null> } | null } | null> } | null };
 
 
-export const InitialJobsDocument = gql`
-    query InitialJobs($limit: Int, $skip: Int, $locale: String, $where: JobFilter) {
+export const JobsDocument = gql`
+    query Jobs($limit: Int, $skip: Int, $locale: String, $where: JobFilter) {
   jobCollection(limit: $limit, skip: $skip, locale: $locale, where: $where) {
     total
     items {
@@ -37512,16 +37512,16 @@ export const InitialJobsDocument = gql`
     `;
 
 /**
- * __useInitialJobsQuery__
+ * __useJobsQuery__
  *
- * To run a query within a React component, call `useInitialJobsQuery` and pass it any options that fit your needs.
- * When your component renders, `useInitialJobsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useJobsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useJobsQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useInitialJobsQuery({
+ * const { data, loading, error } = useJobsQuery({
  *   variables: {
  *      limit: // value for 'limit'
  *      skip: // value for 'skip'
@@ -37530,19 +37530,19 @@ export const InitialJobsDocument = gql`
  *   },
  * });
  */
-export function useInitialJobsQuery(baseOptions?: Apollo.QueryHookOptions<InitialJobsQuery, InitialJobsQueryVariables>) {
+export function useJobsQuery(baseOptions?: Apollo.QueryHookOptions<JobsQuery, JobsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<InitialJobsQuery, InitialJobsQueryVariables>(InitialJobsDocument, options);
+        return Apollo.useQuery<JobsQuery, JobsQueryVariables>(JobsDocument, options);
       }
-export function useInitialJobsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<InitialJobsQuery, InitialJobsQueryVariables>) {
+export function useJobsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<JobsQuery, JobsQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<InitialJobsQuery, InitialJobsQueryVariables>(InitialJobsDocument, options);
+          return Apollo.useLazyQuery<JobsQuery, JobsQueryVariables>(JobsDocument, options);
         }
-export function useInitialJobsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<InitialJobsQuery, InitialJobsQueryVariables>) {
+export function useJobsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<JobsQuery, JobsQueryVariables>) {
           const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<InitialJobsQuery, InitialJobsQueryVariables>(InitialJobsDocument, options);
+          return Apollo.useSuspenseQuery<JobsQuery, JobsQueryVariables>(JobsDocument, options);
         }
-export type InitialJobsQueryHookResult = ReturnType<typeof useInitialJobsQuery>;
-export type InitialJobsLazyQueryHookResult = ReturnType<typeof useInitialJobsLazyQuery>;
-export type InitialJobsSuspenseQueryHookResult = ReturnType<typeof useInitialJobsSuspenseQuery>;
-export type InitialJobsQueryResult = Apollo.QueryResult<InitialJobsQuery, InitialJobsQueryVariables>;
+export type JobsQueryHookResult = ReturnType<typeof useJobsQuery>;
+export type JobsLazyQueryHookResult = ReturnType<typeof useJobsLazyQuery>;
+export type JobsSuspenseQueryHookResult = ReturnType<typeof useJobsSuspenseQuery>;
+export type JobsQueryResult = Apollo.QueryResult<JobsQuery, JobsQueryVariables>;

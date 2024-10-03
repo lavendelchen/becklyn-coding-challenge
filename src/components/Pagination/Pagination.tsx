@@ -33,9 +33,9 @@ const IconButton: React.FC<IconButtonProps> = ({item}) => {
 };
 
 interface PaginationProps {
-  count: number; // Total number of pages
-  page: number; // Current page
-  onPageChange: (event: React.ChangeEvent<unknown>, value: number) => void; // Function to call when page changes
+  count: number;
+  page: number;
+  onPageChange: (event: React.ChangeEvent<unknown>, newPage: number) => void;
 };
 
 export default function Pagination({ count, page, onPageChange }: PaginationProps) {
