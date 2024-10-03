@@ -74,7 +74,7 @@ export default function JobOverview() {
       <div className={styles.jobOverviewBody}>
         <h2 className={styles.bodyHeading}>Aktuelle Jobangebote</h2>
         {loading ? (
-        <h3 className={styles.loading}>Jobs werden geladen...</h3>
+        <h3 className={styles.loading}>Jobangebote werden geladen...</h3>
         ) : (
         <ul className={styles.jobsList}>
         {jobs.map((job, index) => (

@@ -56,8 +56,6 @@
 }
 
 .jobsList {
-  grid-column: span 4;
-  margin-top: 24px;
   list-style-type: none;
   display: flex;
   flex-direction: column;
