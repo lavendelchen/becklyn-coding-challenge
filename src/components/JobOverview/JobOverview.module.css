@@ -44,6 +44,17 @@
   font: var(--display-sm-medium);
 }
 
+.loading, .jobsList {
+  grid-column: span 4;
+  margin-top: 24px;
+}
+
+.loading {
+  color: var(--gray-600);
+  font: var(--text-lg-medium);
+  text-align: center;
+}
+
 .jobsList {
   grid-column: span 4;
   margin-top: 24px;

@@ -50,8 +50,8 @@ export default function Pagination({ count, page, onPageChange }: PaginationProp
   return (
     <nav className={styles.pagination}>
     {items.filter(item => item.type === "first" || item.type === "previous")
-    .map((item) => (
-      <IconButton item={item} />
+    .map((item, index) => (
+      <IconButton key={index} item={item} />
     ))}
       <ul className={styles.innerPagination}>
       {items.filter(item => (
@@ -87,8 +87,8 @@ export default function Pagination({ count, page, onPageChange }: PaginationProp
       })}
       </ul>
     {items.filter(item => item.type === "next" || item.type === "last")
-    .map((item) => (
-      <IconButton item={item} />
+    .map((item, index) => (
+      <IconButton key={index} item={item} />
     ))}
     </nav>
   )

@@ -7,7 +7,7 @@ import styles from "./JobCard.module.css";
 import Link from "next/link";
 
 interface JobCardProps {
-  key: number;
+  index: number;
   department: {
     __typename?: "JobDepartment";
     title?: string | null;
@@ -24,14 +24,14 @@ interface JobCardProps {
 }
 
 export default function JobCard({
-  key,
+  index,
   department,
   title,
   locations,
   types
 }: JobCardProps) {
   return (
-    <li className={styles.jobCard} key={key}>
+    <li className={styles.jobCard} key={index}>
       <h5 className={styles.department}>{department?.title}</h5>
       <Link className={styles.link} href="/">
         <LinkIcon />
