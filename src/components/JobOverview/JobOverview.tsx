@@ -12,7 +12,7 @@ import {
 } from "@/types/graphqlGenerated";
 import { JobItems } from "@/types/graphqlAdditional";
 import { FILTER_QUERY, JOBS_QUERY } from "@/lib/query";
-import { getFilterContent } from "@/lib/utils";
+import { FilterContent, getFilterContent } from "@/lib/utils";
 
 import JobFilter from "../JobFilter/JobFilter";
 import JobCard from "../JobCard/JobCard";
@@ -53,9 +53,19 @@ export default function JobOverview() {
   if (jobsQuery.error)
     console.dir(jobsQuery.error, { depth: null, color: true})
 
+  let filterContent: FilterContent = {
+    departments: new Set<string>(),
+    cities: new Set<string>(),
+    levels: new Set<string>()
+  };
+  let disableFilters = (
+    filterQuery.loading || filterQuery.error ?
+    true : false
+  );
+
   if (filterQuery.data?.jobCollection) {
-    const filterContent = getFilterContent(filterQuery.data?.jobCollection.items)
-    console.dir(filterContent, { depth: null, color: true})
+    filterContent = getFilterContent(filterQuery.data?.jobCollection.items)
+    console.dir(filterContent, { depth: null, color: true}) ///
   }
 
   let jobCount = 0;
@@ -68,6 +78,16 @@ export default function JobOverview() {
     pagesCount = Math.ceil(jobCount / PAGINATION_LIMIT);
   }
 
+  const determinePlaceholder = (filterName: string) => {
+    if (filterQuery.loading)
+      return "Laden...";
+    else if (filterQuery.error)
+        return "Error :(";
+    else if (filterQuery.data)
+      return filterName;
+    else
+      return "You should never see this 🚨"
+  }
   const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
     setCurrentPage(newPage)
   }
@@ -78,9 +98,11 @@ export default function JobOverview() {
         <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
         <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
         <div className={styles.filters}>
-        {Array.from({ length: 3 }, (_, index) => (
-          <JobFilter key={index} />
-        ))}
+          <JobFilter
+            set={filterContent.departments}
+            disabled={disableFilters}
+            placeholder={determinePlaceholder("Bereich")}
+          />
         </div>
       </div>
       <div className={styles.jobOverviewBody}>

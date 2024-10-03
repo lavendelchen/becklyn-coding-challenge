@@ -22,12 +22,22 @@ const Button = forwardRef<HTMLButtonElement, SelectRootSlotProps<any, any>>(
   }
 );
 
-export default function JobFilter() {
+interface JobFilterProps {
+  set: Set<string>;
+  disabled: boolean;
+  placeholder: string;
+};
+
+export default function JobFilter({
+  set,
+  disabled,
+  placeholder
+}: JobFilterProps) {
   return (
     <Select
       // defaultListboxOpen={index === 2 ? true : false}
-      key={3}
       className={styles.select}
+      disabled={disabled}
       slots={{
         root: Button
       }}
@@ -38,8 +48,8 @@ export default function JobFilter() {
         },
         listbox: { className: styles.selectListbox },
       }}
-      value="Hello"
-      onChange={(event, newValue) => {}}
+      placeholder={placeholder}
+      // onChange={(event, newValue) => {}}
     >
       <Option className={styles.selectOption} key="Hello" value="Hello">
         Hello

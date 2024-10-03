@@ -14,7 +14,7 @@ const figtreeItalic = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Offene Stellen – CreditPlus", // replace with variable?
+  title: "Offene Stellen – CreditPlus",
 };
 
 export default function RootLayout({

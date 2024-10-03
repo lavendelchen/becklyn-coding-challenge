@@ -11,7 +11,12 @@
   color: var(--gray-600)
 }
 
-.select:hover {
+.select:global(.base--disabled) {
+  background: var(--gray-100);
+  color: var(--gray-500);
+}
+
+.select:hover:global(:not(.base--disabled)) {
   border-color: #838383;
   color: var(--gray-900);
 }
@@ -29,6 +34,10 @@
 
 .select span:global(.material-symbols-outlined) {
   color: #272727;
+}
+.select:global(.base--disabled)
+span:global(.material-symbols-outlined) {
+  color: var(--gray-500);
 }
 
 .selectPopup {

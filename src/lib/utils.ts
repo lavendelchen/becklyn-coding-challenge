@@ -1,7 +1,13 @@
 import { JobItems } from "@/types/graphqlAdditional";
 
+export interface FilterContent {
+  departments: Set<string>;
+  cities: Set<string>;
+  levels: Set<string>;
+}
+
 export function getFilterContent(jobs: JobItems) {
-  const filterContent = {
+  const filterContent: FilterContent = {
     departments: new Set<string>(),
     cities: new Set<string>(),
     levels: new Set<string>()
