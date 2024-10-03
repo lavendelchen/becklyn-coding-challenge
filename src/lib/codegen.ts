@@ -9,7 +9,7 @@ const accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 
 const config: CodegenConfig = {
   schema: `${endpoint}?access_token=${accessToken}`,
-  documents: "src/lib/api.ts",
+  documents: "src/lib/query.ts",
   generates: {
     [resolve(__dirname, '../types/graphql.ts')]: {
       plugins: [

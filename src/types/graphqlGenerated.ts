@@ -19852,14 +19852,7 @@ export type ContentfulMetadata = {
   tags: Array<Maybe<ContentfulTag>>;
 };
 
-export type ContentfulMetadataConceptsFilter = {
-  id_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  id_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  id_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type ContentfulMetadataFilter = {
-  concepts?: InputMaybe<ContentfulMetadataConceptsFilter>;
   tags?: InputMaybe<ContentfulMetadataTagsFilter>;
   tags_exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -37451,42 +37444,23 @@ export type CfsocialsMultiTypeNestedFilter = {
 export type JobsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
   where?: InputMaybe<JobFilter>;
 }>;
 
-export type JobItems = Array<{
-  __typename?: 'Job',
-  name?: string | null,
-  title?: string | null,
-  department?: {
-    __typename?: 'JobDepartment',
-    title?: string | null
-  } | null,
-  locationsCollection?: {
-    __typename?: 'JobLocationsCollection',
-    total: number,
-    items: Array<{
-      __typename?: 'ContentTypeLocation',
-      city?: string | null
-    } | null>
-  } | null,
-  typesCollection?: {
-    __typename?: 'JobTypesCollection',
-    total: number,
-    items: Array<{
-      __typename?: 'JobType',
-      title?: string | null
-    } | null>
-  } | null
-} | null>
 
 export type JobsQuery = { __typename?: 'Query', jobCollection?: { __typename?: 'JobCollection', total: number, items: Array<{ __typename?: 'Job', name?: string | null, title?: string | null, department?: { __typename?: 'JobDepartment', title?: string | null } | null, locationsCollection?: { __typename?: 'JobLocationsCollection', total: number, items: Array<{ __typename?: 'ContentTypeLocation', city?: string | null } | null> } | null, typesCollection?: { __typename?: 'JobTypesCollection', total: number, items: Array<{ __typename?: 'JobType', title?: string | null } | null> } | null } | null> } | null };
 
+export type FilterQueryVariables = Exact<{
+  where?: InputMaybe<JobFilter>;
+}>;
+
+
+export type FilterQuery = { __typename?: 'Query', jobCollection?: { __typename?: 'JobCollection', items: Array<{ __typename?: 'Job', department?: { __typename?: 'JobDepartment', title?: string | null } | null, locationsCollection?: { __typename?: 'JobLocationsCollection', total: number, items: Array<{ __typename?: 'ContentTypeLocation', city?: string | null } | null> } | null, levelsCollection?: { __typename?: 'JobLevelsCollection', total: number, items: Array<{ __typename?: 'JobLevel', title?: string | null } | null> } | null } | null> } | null };
+
 
 export const JobsDocument = gql`
-    query Jobs($limit: Int, $skip: Int, $locale: String, $where: JobFilter) {
-  jobCollection(limit: $limit, skip: $skip, locale: $locale, where: $where) {
+    query Jobs($limit: Int, $skip: Int, $where: JobFilter) {
+  jobCollection(limit: $limit, skip: $skip, where: $where, locale: "") {
     total
     items {
       department {
@@ -37525,7 +37499,6 @@ export const JobsDocument = gql`
  *   variables: {
  *      limit: // value for 'limit'
  *      skip: // value for 'skip'
- *      locale: // value for 'locale'
  *      where: // value for 'where'
  *   },
  * });
@@ -37546,3 +37519,59 @@ export type JobsQueryHookResult = ReturnType<typeof useJobsQuery>;
 export type JobsLazyQueryHookResult = ReturnType<typeof useJobsLazyQuery>;
 export type JobsSuspenseQueryHookResult = ReturnType<typeof useJobsSuspenseQuery>;
 export type JobsQueryResult = Apollo.QueryResult<JobsQuery, JobsQueryVariables>;
+export const FilterDocument = gql`
+    query Filter($where: JobFilter) {
+  jobCollection(where: $where, locale: "", limit: null) {
+    items {
+      department {
+        title
+      }
+      locationsCollection {
+        total
+        items {
+          city
+        }
+      }
+      levelsCollection {
+        total
+        items {
+          title
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useFilterQuery__
+ *
+ * To run a query within a React component, call `useFilterQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilterQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFilterQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *   },
+ * });
+ */
+export function useFilterQuery(baseOptions?: Apollo.QueryHookOptions<FilterQuery, FilterQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FilterQuery, FilterQueryVariables>(FilterDocument, options);
+      }
+export function useFilterLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilterQuery, FilterQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FilterQuery, FilterQueryVariables>(FilterDocument, options);
+        }
+export function useFilterSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<FilterQuery, FilterQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<FilterQuery, FilterQueryVariables>(FilterDocument, options);
+        }
+export type FilterQueryHookResult = ReturnType<typeof useFilterQuery>;
+export type FilterLazyQueryHookResult = ReturnType<typeof useFilterLazyQuery>;
+export type FilterSuspenseQueryHookResult = ReturnType<typeof useFilterSuspenseQuery>;
+export type FilterQueryResult = Apollo.QueryResult<FilterQuery, FilterQueryVariables>;

@@ -1,8 +1,6 @@
 import styles from "./JobFilter.module.css";
 import { forwardRef } from "react";
-import { 
-  Select
-} from "@mui/base/Select";
+import { Select } from "@mui/base/Select";
 import { Option } from "@mui/base/Option";
 
 type SelectRootSlotProps<TValue, Multiple> = {
