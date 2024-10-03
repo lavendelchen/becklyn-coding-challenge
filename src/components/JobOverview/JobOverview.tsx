@@ -69,7 +69,7 @@ export default function JobOverview() {
           />
         ))}
         </ul>
-        <Pagination count={50} page={30} onPageChange={() => {}}/>
+        <Pagination count={50} page={49} onPageChange={() => {}}/>
       </div>
     </>
   );
