@@ -28,15 +28,6 @@
   color: var(--secondary);
 }
 
-.filters {
-  grid-column: span 4;
-  width: 100%;
-  margin-top: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .bodyHeading {
   grid-column: span 4;
   text-align: center;
