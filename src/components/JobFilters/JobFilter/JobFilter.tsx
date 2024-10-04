@@ -1,5 +1,5 @@
 import styles from "./JobFilter.module.css";
-import { forwardRef } from "react";
+import { forwardRef, useRef } from "react";
 import { Select } from "@mui/base/Select";
 import { Option } from "@mui/base/Option";
 
@@ -42,6 +42,21 @@ export default function JobFilter({
   disabled,
   placeholder
 }: JobFilterProps) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const handleOptionClick = (option: string) => {
+    return (event: React.MouseEvent<HTMLLIElement>) => {
+      setTimeout(() => {
+        buttonRef.current?.blur();
+      }, 0);
+      
+      if (option === value)
+        onChange(null, null);
+      else
+        onChange(null, option);
+    };
+  }
+
   return (
     <Select
       // defaultListboxOpen={true}
@@ -51,6 +66,7 @@ export default function JobFilter({
         root: Button
       }}
       slotProps={{
+        root: { ref: buttonRef },
         popup: {
           className: styles.selectPopup,
           disablePortal: true
@@ -59,13 +75,13 @@ export default function JobFilter({
       }}
       placeholder={placeholder}
       value={value}
-      onChange={onChange}
     >
     {options.map((option) => (
       <Option
         className={styles.selectOption}
         key={option}
         value={option}
+        onClick={handleOptionClick(option)}
       >
         {option}
       </Option>

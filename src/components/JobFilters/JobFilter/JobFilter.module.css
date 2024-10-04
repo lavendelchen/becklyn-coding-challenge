@@ -60,6 +60,7 @@ span:global(.material-symbols-outlined) {
 
 .selectOption {
   padding: 10px 14px;
+  cursor: pointer;
 }
 
 .selectOption:hover,

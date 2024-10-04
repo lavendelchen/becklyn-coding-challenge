@@ -32,13 +32,13 @@ export default function JobOverview() {
     "where": {
       "available": true,
       "department": {
-        "title": null
+        "title": department
       },
       "levels": {
-        "title": null
+        "title": level
       },
       "locations": {
-        "city": null
+        "city": city
       }
     },
   }
@@ -68,12 +68,15 @@ export default function JobOverview() {
   const handleFilterChange: HandleFilterChange = {
     department: (_, newDepartment) => {
       setDepartment(newDepartment);
+      setCurrentPage(1);
     },
     city: (_, newCity) => {
       setCity(newCity);
+      setCurrentPage(1);
     },
     level: (_, newLevel) => {
       setLevel(newLevel);
+      setCurrentPage(1);
     }
   };
 
