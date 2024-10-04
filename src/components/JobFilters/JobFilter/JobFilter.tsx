@@ -1,5 +1,5 @@
 import styles from "./JobFilter.module.css";
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { Select } from "@mui/base/Select";
 import { Option } from "@mui/base/Option";
 
@@ -42,7 +42,27 @@ export default function JobFilter({
   disabled,
   placeholder
 }: JobFilterProps) {
+  const [popupOpen, setPopupOpen] = useState(false);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  const setPopupWidth = () => {
+    if (buttonRef.current && popupRef.current) {
+        const buttonWidth = buttonRef.current.offsetWidth;
+        popupRef.current.style.width = `${buttonWidth}px`;
+    }
+  };
+
+  useEffect(() => {
+    if (popupOpen) {
+      setPopupWidth(); // Set width when popup opens
+    }
+    window.addEventListener('resize', setPopupWidth);
+
+    return () => {
+      window.removeEventListener('resize', setPopupWidth);
+    };
+  }, [popupOpen]);
 
   const handleOptionClick = (option: string) => {
     return (event: React.MouseEvent<HTMLLIElement>) => {
@@ -60,20 +80,23 @@ export default function JobFilter({
   return (
     <Select
       className={`${styles.select} ${!value ? styles.placeholder : ''}`}
+      value={value}
+      placeholder={placeholder}
       disabled={disabled}
+      onListboxOpenChange={(open) => setPopupOpen(open)}
       slots={{
         root: Button
       }}
       slotProps={{
         root: { ref: buttonRef },
         popup: {
+          ref: popupRef,
           className: styles.selectPopup,
           disablePortal: true
         },
         listbox: { className: styles.selectListbox },
       }}
-      placeholder={placeholder}
-      value={value}
+      // listboxOpen={true}
     >
     {options.map((option) => (
       <Option

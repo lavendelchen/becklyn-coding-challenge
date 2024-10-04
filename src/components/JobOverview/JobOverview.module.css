@@ -46,3 +46,44 @@
   align-items: stretch;
   gap: 10px;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .jobOverviewHeader,
+  .jobOverviewBody {
+    --page-padding: 64px;
+  }
+  
+  .jobOverviewHeader {
+    padding-top: 130px;
+    padding-bottom: 80px;
+  }
+
+  .jobOverviewBody {
+    padding-top: 80px;
+    padding-bottom: 150px;
+  }
+
+  .subHeading {
+    font: var(--text-md-medium);
+  }
+
+  .heading {
+    font: var(--display-md-bold);
+  }
+
+  .bodyHeading {
+    font: var(--display-md-medium);
+  }
+
+  .loading, .jobsList {
+    margin-top: 32px;
+  }
+
+  .loading {
+    font: var(--text-xl-medium);
+  }
+
+  .jobsList {
+    gap: 24px;
+  }
+}

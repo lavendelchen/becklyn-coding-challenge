@@ -48,7 +48,8 @@
   --display-lg-regular:   300 48px/60px var(--font-figtree), "Arial", sans-serif;
   --display-lg-medium:    700 48px/60px var(--font-figtree), "Arial", sans-serif;
   --display-md-regular:   300 36px/44px var(--font-figtree), "Arial", sans-serif;
-  --display-md-medium:    700 36px/44px var(--font-figtree), "Arial", sans-serif;
+  --display-md-medium:    600 36px/44px var(--font-figtree), "Arial", sans-serif;
+  --display-md-bold:      700 36px/44px var(--font-figtree), "Arial", sans-serif;
   --display-sm-regular:   300 30px/38px var(--font-figtree), "Arial", sans-serif;
   --display-sm-medium:    600 30px/38px var(--font-figtree), "Arial", sans-serif;
   --display-sm-bold:      700 30px/38px var(--font-figtree), "Arial", sans-serif;
