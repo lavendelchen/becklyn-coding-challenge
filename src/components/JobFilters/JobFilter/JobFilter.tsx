@@ -59,7 +59,6 @@ export default function JobFilter({
 
   return (
     <Select
-      // defaultListboxOpen={true}
       className={`${styles.select} ${!value ? styles.placeholder : ''}`}
       disabled={disabled}
       slots={{

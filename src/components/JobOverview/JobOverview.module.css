@@ -1,8 +1,5 @@
 .jobOverviewHeader,
 .jobOverviewBody {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 10px;
   --page-padding: 16px;
   padding-left: var(--page-padding);
   padding-right: var(--page-padding);
@@ -15,28 +12,24 @@
 }
 
 .subHeading {
-  grid-column: span 4;
   text-align: center;
   font: var(--text-sm-medium);
   color: var(--primary-600);
 }
 
 .heading {
-  grid-column: span 4;
   text-align: center;
   font: var(--display-sm-bold);
   color: var(--secondary);
 }
 
 .bodyHeading {
-  grid-column: span 4;
   text-align: center;
   color: var(--secondary);
   font: var(--display-sm-medium);
 }
 
 .loading, .jobsList {
-  grid-column: span 4;
   margin-top: 24px;
 }
 

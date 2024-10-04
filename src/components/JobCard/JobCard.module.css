@@ -5,7 +5,7 @@
   padding: 24px;
   display: grid;
   grid-template-rows: auto auto auto;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: fit-content 1fr 20px;
   grid-template-areas:
     "department department  link"
     "title      title       ."
@@ -27,11 +27,10 @@
 
 .link {
   grid-area: link;
-  justify-self: right;
-  width: 20px;
+  justify-self: end;
   display: flex;
   justify-content: right;
-  align-items: top;
+  align-items: flex-start;
   cursor: pointer;
 }
 
@@ -57,7 +56,6 @@
   font: var(--text-md-regular);
   display: flex;
   column-gap: 6px;
-  flex-wrap: nowrap;
 }
 
 .location svg,
