@@ -28,6 +28,7 @@
 .link {
   grid-area: link;
   width: max-content;
+  justify-self: right;
   display: flex;
   gap: 14px;
   color: var(--primary-600);
