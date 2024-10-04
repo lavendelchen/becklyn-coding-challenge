@@ -71,8 +71,3 @@ span:global(.material-symbols-outlined) {
   background: var(--primary-50);
   color: var(--primary-700);
 }
-
-@media (min-width: 768px) and (max-width: 1024px) {
-  .selectPopup {
-  }
-}

@@ -1,10 +1,11 @@
+import styles from "./JobCard.module.css";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import {
   LinkIcon,
   LocationIcon,
   TypeIcon
 } from "./icons/icons";
-import styles from "./JobCard.module.css";
-import Link from "next/link";
 
 interface JobCardProps {
   index: number;
@@ -30,10 +31,27 @@ export default function JobCard({
   locations,
   types
 }: JobCardProps) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
   return (
     <li className={styles.jobCard} key={index}>
       <h5 className={styles.department}>{department?.title}</h5>
       <Link className={styles.link} href="/">
+      {
+        windowWidth >= 768 ?
+        "Stelle anzeigen" : ""
+      }
         <LinkIcon />
       </Link>
       <h3 className={styles.title}>{title}</h3>
