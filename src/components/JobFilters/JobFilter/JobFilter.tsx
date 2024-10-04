@@ -22,21 +22,30 @@ const Button = forwardRef<HTMLButtonElement, SelectRootSlotProps<any, any>>(
   }
 );
 
+export type OnFilterChange = (
+  event: React.MouseEvent<Element> | React.KeyboardEvent<Element> | React.FocusEvent<Element> | null, 
+  value: string | null
+) => void;
+
 interface JobFilterProps {
+  value: string | null;
+  onChange: OnFilterChange;
   options: string[];
   disabled: boolean;
   placeholder: string;
 };
 
 export default function JobFilter({
+  value,
+  onChange,
   options,
   disabled,
   placeholder
 }: JobFilterProps) {
   return (
     <Select
-      // defaultListboxOpen={index === 2 ? true : false}
-      className={styles.select}
+      // defaultListboxOpen={true}
+      className={`${styles.select} ${!value ? styles.placeholder : ''}`}
       disabled={disabled}
       slots={{
         root: Button
@@ -49,7 +58,8 @@ export default function JobFilter({
         listbox: { className: styles.selectListbox },
       }}
       placeholder={placeholder}
-      // onChange={(event, newValue) => {}}
+      value={value}
+      onChange={onChange}
     >
     {options.map((option) => (
       <Option

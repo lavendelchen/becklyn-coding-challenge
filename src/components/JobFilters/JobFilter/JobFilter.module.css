@@ -8,7 +8,11 @@
   align-items: center;
   justify-content: space-between;
   font: var(--text-md-medium);
-  color: var(--gray-600)
+  color: var(--gray-900);
+}
+
+.select.placeholder {
+  color: var(--gray-600);
 }
 
 .select:global(.base--disabled) {
@@ -41,7 +45,7 @@ span:global(.material-symbols-outlined) {
 }
 
 .selectPopup {
-  width: calc(100% - (var(--page-margin) * 2));
+  width: calc(100% - (var(--page-padding) * 2));
   margin-top: 8px;
   border-radius: 8px;
   background: var(--gray-50);

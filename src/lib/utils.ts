@@ -1,12 +1,12 @@
 import { JobItems } from "@/types/graphqlAdditional";
 
-export interface FilterContent {
+export interface FilterOptions {
   departments: string[];
   cities: string[];
   levels: string[];
 }
 
-export function getFilterContent(jobs: JobItems) {
+export function getFilterOptions(jobs: JobItems) {
   const departments = new Set<string>();
   const cities = new Set<string>();
   const levels = new Set<string>();
@@ -31,7 +31,7 @@ export function getFilterContent(jobs: JobItems) {
     }
   })
 
-  const filterContent: FilterContent = {
+  const filterOptions: FilterOptions = {
     departments: Array.from(departments),
     cities: Array.from(cities),
     levels: Array.from(levels),
@@ -41,9 +41,9 @@ export function getFilterContent(jobs: JobItems) {
     a.toLowerCase().localeCompare(b.toLowerCase())
   );
 
-  filterContent.departments.sort(alphabetically);
-  filterContent.cities.sort(alphabetically);
-  filterContent.levels.sort(alphabetically);
+  filterOptions.departments.sort(alphabetically);
+  filterOptions.cities.sort(alphabetically);
+  filterOptions.levels.sort(alphabetically);
 
-  return filterContent;
+  return filterOptions;
 }

@@ -11,7 +11,10 @@ import {
 import { JobItems } from "@/types/graphqlAdditional";
 import { JOBS_QUERY } from "@/lib/query";
 
-import JobFilters from "../JobFilters/JobFilters";
+import JobFilters, {
+  HandleFilterChange,
+  JobFilterValues
+} from "../JobFilters/JobFilters";
 import JobCard from "../JobCard/JobCard";
 import Pagination from "../Pagination/Pagination"
 
@@ -19,6 +22,9 @@ const PAGINATION_LIMIT = 5;
 
 export default function JobOverview() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [department, setDepartment]   = useState<string | null>(null);
+  const [city, setCity]               = useState<string | null>(null);
+  const [level, setLevel]             = useState<string | null>(null);
 
   const jobsVariables = {
     "limit": PAGINATION_LIMIT,
@@ -59,12 +65,31 @@ export default function JobOverview() {
     setCurrentPage(newPage)
   }
 
+  const handleFilterChange: HandleFilterChange = {
+    department: (_, newDepartment) => {
+      setDepartment(newDepartment);
+    },
+    city: (_, newCity) => {
+      setCity(newCity);
+    },
+    level: (_, newLevel) => {
+      setLevel(newLevel);
+    }
+  };
+
   return (
     <>
       <div className={styles.jobOverviewHeader}>
         <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
         <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
-        <JobFilters />
+        <JobFilters
+          values={{
+            department: department,
+            city: city,
+            level: level
+          } as JobFilterValues}
+          handleFilterChange={handleFilterChange}
+        />
       </div>
       <div className={styles.jobOverviewBody}>
         <h2 className={styles.bodyHeading}>Aktuelle Jobangebote</h2>

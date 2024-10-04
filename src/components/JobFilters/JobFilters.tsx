@@ -6,11 +6,30 @@ import {
   FilterQueryVariables
 } from "@/types/graphqlGenerated"
 import { FILTER_QUERY } from "@/lib/query";
-import { FilterContent, getFilterContent } from "@/lib/utils";
+import { FilterOptions, getFilterOptions } from "@/lib/utils";
 
-import JobFilter from "../JobFilters/JobFilter/JobFilter";
+import JobFilter, { OnFilterChange } from "../JobFilters/JobFilter/JobFilter";
 
-export default function JobFilters() {
+export interface JobFilterValues {
+  department: string | null;
+  city: string | null;
+  level: string | null;
+}
+
+export interface HandleFilterChange {
+  department: OnFilterChange;
+  city: OnFilterChange;
+  level: OnFilterChange;
+}
+
+interface JobFiltersProps {
+  values: JobFilterValues;
+  handleFilterChange: HandleFilterChange;
+};
+
+export default function JobFilters({
+  values, handleFilterChange
+}: JobFiltersProps) {
   const filterQuery = useQuery<FilterQuery, FilterQueryVariables>(
     FILTER_QUERY,
     { variables: { where: { available: true } } }
@@ -19,7 +38,7 @@ export default function JobFilters() {
   if (filterQuery.error)
     console.dir(filterQuery.error, { depth: null, color: true})
 
-  let filterContent: FilterContent = {
+  let options: FilterOptions = {
     departments: [],
     cities: [],
     levels: []
@@ -30,8 +49,7 @@ export default function JobFilters() {
   );
 
   if (filterQuery.data?.jobCollection) {
-    filterContent = getFilterContent(filterQuery.data?.jobCollection.items)
-    console.dir(filterContent, { depth: null, color: true}) ///
+    options = getFilterOptions(filterQuery.data?.jobCollection.items)
   }
 
   const determinePlaceholder = (filterName: string) => {
@@ -48,17 +66,23 @@ export default function JobFilters() {
   return (
     <div className={styles.filters}>
       <JobFilter
-        options={filterContent.departments}
+        value={values.department}
+        onChange={handleFilterChange.department}
+        options={options.departments}
         placeholder={determinePlaceholder("Bereich")}
         disabled={disableFilters}
       />
       <JobFilter
-        options={filterContent.cities}
+        value={values.city}
+        onChange={handleFilterChange.city}
+        options={options.cities}
         placeholder={determinePlaceholder("Stadt")}
         disabled={disableFilters}
       />
       <JobFilter
-        options={filterContent.levels}
+        value={values.level}
+        onChange={handleFilterChange.level}
+        options={options.levels}
         placeholder={determinePlaceholder("Erfahrungslevel")}
         disabled={disableFilters}
       />
