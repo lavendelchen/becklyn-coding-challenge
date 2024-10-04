@@ -49,8 +49,18 @@ export default function JobFilters() {
     <div className={styles.filters}>
       <JobFilter
         set={filterContent.departments}
-        disabled={disableFilters}
         placeholder={determinePlaceholder("Bereich")}
+        disabled={disableFilters}
+      />
+      <JobFilter
+        set={filterContent.cities}
+        placeholder={determinePlaceholder("Stadt")}
+        disabled={disableFilters}
+      />
+      <JobFilter
+        set={filterContent.levels}
+        placeholder={determinePlaceholder("Erfahrungslevel")}
+        disabled={disableFilters}
       />
     </div>
   )
