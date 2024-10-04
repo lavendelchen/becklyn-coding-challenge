@@ -20,9 +20,9 @@ export default function JobFilters() {
     console.dir(filterQuery.error, { depth: null, color: true})
 
   let filterContent: FilterContent = {
-    departments: new Set<string>(),
-    cities: new Set<string>(),
-    levels: new Set<string>()
+    departments: [],
+    cities: [],
+    levels: []
   };
   let disableFilters = (
     filterQuery.loading || filterQuery.error ?
@@ -48,17 +48,17 @@ export default function JobFilters() {
   return (
     <div className={styles.filters}>
       <JobFilter
-        set={filterContent.departments}
+        options={filterContent.departments}
         placeholder={determinePlaceholder("Bereich")}
         disabled={disableFilters}
       />
       <JobFilter
-        set={filterContent.cities}
+        options={filterContent.cities}
         placeholder={determinePlaceholder("Stadt")}
         disabled={disableFilters}
       />
       <JobFilter
-        set={filterContent.levels}
+        options={filterContent.levels}
         placeholder={determinePlaceholder("Erfahrungslevel")}
         disabled={disableFilters}
       />

@@ -23,13 +23,13 @@ const Button = forwardRef<HTMLButtonElement, SelectRootSlotProps<any, any>>(
 );
 
 interface JobFilterProps {
-  set: Set<string>;
+  options: string[];
   disabled: boolean;
   placeholder: string;
 };
 
 export default function JobFilter({
-  set,
+  options,
   disabled,
   placeholder
 }: JobFilterProps) {
@@ -51,15 +51,15 @@ export default function JobFilter({
       placeholder={placeholder}
       // onChange={(event, newValue) => {}}
     >
-      <Option className={styles.selectOption} key="Hello" value="Hello">
-        Hello
+    {options.map((option) => (
+      <Option
+        className={styles.selectOption}
+        key={option}
+        value={option}
+      >
+        {option}
       </Option>
-      <Option className={styles.selectOption} key="Bye" value="Bye">
-        Bye
-      </Option>
-      <Option className={styles.selectOption} key="Mönchengladbach" value="Mönchengladbach">
-        Mönchengladbach
-      </Option>
+    ))}
     </Select>
   )
 }
