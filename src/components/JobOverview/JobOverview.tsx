@@ -16,7 +16,7 @@ import JobFilters, {
   JobFilterValues
 } from "../JobFilters/JobFilters";
 import JobCard from "../JobCard/JobCard";
-import Pagination from "../Pagination/Pagination"
+import Pagination from "../Pagination/Pagination";
 
 const PAGINATION_LIMIT = 5;
 
