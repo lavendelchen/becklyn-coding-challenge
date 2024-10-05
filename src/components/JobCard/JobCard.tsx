@@ -51,7 +51,7 @@ export default function JobCard({
       <h5 className={styles.department}>{department?.title}</h5>
       <Link className={styles.link} href="/">
       {
-        windowWidth >= 768 ?
+        windowWidth >= 700 ?
         "Stelle anzeigen" : ""
       }
         <LinkIcon />

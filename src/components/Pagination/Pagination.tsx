@@ -24,12 +24,12 @@ const IconButton: React.FC<IconButtonProps> = ({item, windowWidth}) => {
       break;
     case "previous":
       iconName = "arrow_back";
-      if (windowWidth >= 768)
+      if (windowWidth >= 700)
         previousText = "Vorherige";
       break;
     case "next":
       iconName = "arrow_forward";
-      if (windowWidth >= 768)
+      if (windowWidth >= 700)
         nextText = "Nächste";
       break;
   }
@@ -73,7 +73,7 @@ export default function Pagination({ count, page, onPageChange }: PaginationProp
     page,
     onChange: onPageChange,
     siblingCount: 0,
-    boundaryCount: windowWidth >= 768 ? 2 : 1
+    boundaryCount: windowWidth >= 700 ? 2 : 1
   });
   
   return (

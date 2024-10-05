@@ -18,7 +18,7 @@ import JobFilters, {
 import JobCard from "../JobCard/JobCard";
 import Pagination from "../Pagination/Pagination"
 
-const PAGINATION_LIMIT = 5;
+const PAGINATION_LIMIT = 1;
 
 export default function JobOverview() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -81,7 +81,7 @@ export default function JobOverview() {
   };
 
   return (
-    <>
+    <main>
       <div className={styles.jobOverviewHeader}>
         <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
         <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
@@ -114,6 +114,6 @@ export default function JobOverview() {
         )}
         <Pagination count={pagesCount} page={currentPage} onPageChange={handlePageChange}/>
       </div>
-    </>
+    </main>
   );
 }
