@@ -18,7 +18,7 @@ import JobFilters, {
 import JobCard from "../JobCard/JobCard";
 import Pagination from "../Pagination/Pagination"
 
-const PAGINATION_LIMIT = 1;
+const PAGINATION_LIMIT = 5;
 
 export default function JobOverview() {
   const [currentPage, setCurrentPage] = useState(1);
