@@ -22,13 +22,13 @@
   grid-area: department;
   color: var(--primary-600);
   font: var(--text-sm-medium);
-  margin-right: 24px;
 }
 
 .link {
   grid-area: link;
   width: max-content;
   justify-self: right;
+  margin-left: 24px;
   display: flex;
   gap: 14px;
   color: var(--primary-600);
