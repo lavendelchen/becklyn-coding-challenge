@@ -78,7 +78,7 @@
   margin-right: 4px;
 }
 
-@media (min-width: 700px) and (max-width: 1059px) {
+@media (min-width: 700px) {
   .jobCard {
     padding: 30px;
     padding-left: 24px;

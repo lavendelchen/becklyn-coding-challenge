@@ -97,9 +97,12 @@
     align-items: center;
   }
   
-  .jobOverviewHeader > *,
+  .jobOverviewHeader > * {
+    width: 930px; 
+  }
+
   .jobOverviewBody > * {
-    width: 930px;
+    width: 824px; 
   }
 
   .jobOverviewHeader {

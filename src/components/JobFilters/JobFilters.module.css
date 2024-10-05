@@ -1,16 +1,21 @@
 .filters {
-  width: 100%;
   margin-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-@media (min-width: 700px) and (max-width: 1059px) {
+@media (min-width: 700px) {
   .filters {
     margin-top: 30px;
     flex-direction: row;
     justify-content: stretch;
     gap: 20px;
+  }
+}
+
+@media (min-width: 1060px) {
+  .filters {
+    gap: 24px;
   }
 }
