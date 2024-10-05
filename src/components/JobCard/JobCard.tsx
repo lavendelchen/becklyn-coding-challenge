@@ -35,10 +35,12 @@ export default function JobCard({
 }: JobCardProps) {
   const [windowWidth, setWindowWidth] = useState(0);
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+    handleResize()
 
     window.addEventListener('resize', handleResize);
     return () => {

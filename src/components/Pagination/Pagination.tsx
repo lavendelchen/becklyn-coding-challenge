@@ -57,10 +57,12 @@ interface PaginationProps {
 export default function Pagination({ count, page, onPageChange }: PaginationProps) {
   const [windowWidth, setWindowWidth] = useState(0);
   
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
   useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+    handleResize();
 
     window.addEventListener('resize', handleResize);
     return () => {
