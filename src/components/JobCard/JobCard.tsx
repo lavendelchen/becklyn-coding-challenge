@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./JobCard.module.css";
-import { useEffect, useState } from "react";
+import useWindowWidth from "@/lib/useWindowWidth";
 import Link from "next/link";
 import {
   LinkIcon,
@@ -33,20 +33,7 @@ export default function JobCard({
   locations,
   types
 }: JobCardProps) {
-  const [windowWidth, setWindowWidth] = useState(0);
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    handleResize()
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const windowWidth = useWindowWidth();
   
   return (
     <li className={styles.jobCard} key={index}>

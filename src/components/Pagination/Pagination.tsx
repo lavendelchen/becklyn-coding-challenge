@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import styles from "./Pagination.module.css"
+import styles from "./Pagination.module.css";
+import useWindowWidth from "@/lib/useWindowWidth";
 import usePagination, { UsePaginationItem } from "@mui/material/usePagination";
 
 interface IconButtonProps {
@@ -55,20 +55,7 @@ interface PaginationProps {
 };
 
 export default function Pagination({ count, page, onPageChange }: PaginationProps) {
-  const [windowWidth, setWindowWidth] = useState(0);
-  
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
-  useEffect(() => {
-    handleResize();
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  const windowWidth = useWindowWidth();
 
   const { items } = usePagination({
     count,

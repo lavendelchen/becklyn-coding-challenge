@@ -1,12 +1,12 @@
-import styles from "./JobFilters.module.css"
+import styles from "./JobFilters.module.css";
 
 import { useQuery } from "@apollo/client";
 import {
   FilterQuery,
   FilterQueryVariables
-} from "@/types/graphqlGenerated"
+} from "@/types/graphqlGenerated";
 import { FILTER_QUERY } from "@/lib/query";
-import { FilterOptions, getFilterOptions } from "@/lib/utils";
+import { FilterOptions, getFilterOptions } from "@/lib/getFilterOptions";
 
 import JobFilter, { OnFilterChange } from "../JobFilters/JobFilter/JobFilter";
 
