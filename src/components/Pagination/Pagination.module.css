@@ -15,39 +15,48 @@
 button.paginationItem,
 .paginationItem.centerItem button,
 .paginationItem.centerItem span {
-  width: 40px;
   height: 40px;
   color: var(--gray-600);
+  font: var(--text-sm-medium);
   background: transparent;
   border: none;
-  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+button.paginationItem span,
+.paginationItem.centerItem button,
+.paginationItem.centerItem span {
+  width: 40px;
+  border-radius: 50%;
+}
+
+button.paginationItem span {
+  color: var(--gray-600);
+  font-size: 20px;
+  line-height: 20px;
+  pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
 button.paginationItem:hover,
+button.paginationItem:hover span,
 .paginationItem.centerItem button:hover {
   color: var(--gray-900);
   cursor: pointer;
 }
 
-button.paginationItem:disabled {
+button.paginationItem:disabled,
+button.paginationItem:disabled span {
   color: var(--gray-400);
   cursor: default;
-}
-
-.paginationItem.centerItem button {
-  font: var(--text-sm-medium);
 }
 
 .paginationItem.centerItem button.selected {
   background: var(--primary-75);
   color: var(--primary-600);
   cursor: default;
-}
-
-.paginationItem:global(.material-symbols-outlined) {
-  font-size: 20px;
-  line-height: 20px;
 }

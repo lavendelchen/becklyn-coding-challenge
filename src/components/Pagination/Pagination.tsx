@@ -1,33 +1,49 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import styles from "./Pagination.module.css"
 import usePagination, { UsePaginationItem } from "@mui/material/usePagination";
 
 interface IconButtonProps {
   item: UsePaginationItem;
+  windowWidth: number;
 }
 
-const IconButton: React.FC<IconButtonProps> = ({item}) => {
+const IconButton: React.FC<IconButtonProps> = ({item, windowWidth}) => {
   const { type, ...rest } = item;
-  let iconName;
+  let iconName = "";
+  let previousText = "";
+  let nextText = "";
   
   switch (item.type) {
     case "first":
-      iconName = "keyboard_double_arrow_left"; break;
+      iconName = "keyboard_double_arrow_left";
+      break;
     case "last":
-      iconName = "keyboard_double_arrow_right"; break;
+      iconName = "keyboard_double_arrow_right";
+      break;
     case "previous":
-      iconName = "arrow_back"; break;
+      iconName = "arrow_back";
+      if (windowWidth >= 768)
+        previousText = "Vorherige";
+      break;
     case "next":
-      iconName = "arrow_forward"; break;
-    default:
-      iconName = "";
+      iconName = "arrow_forward";
+      if (windowWidth >= 768)
+        nextText = "Nächste";
+      break;
   }
 
   return (
     <button
-      className={`${styles.paginationItem} material-symbols-outlined`}
+      className={styles.paginationItem}
       {...rest}
     >
-      {iconName}
+      {nextText}
+      <span className="material-symbols-outlined">
+        {iconName}
+      </span>
+      {previousText}
     </button>
   );
 };
@@ -39,19 +55,36 @@ interface PaginationProps {
 };
 
 export default function Pagination({ count, page, onPageChange }: PaginationProps) {
+  const [windowWidth, setWindowWidth] = useState(0);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const { items } = usePagination({
-    count, // Total number of pages
-    page, // Current active page
-    onChange: onPageChange, // Handle page changes
+    count,
+    page,
+    onChange: onPageChange,
     siblingCount: 0,
-    boundaryCount: 1
+    boundaryCount: windowWidth >= 768 ? 2 : 1
   });
   
   return (
     <nav className={styles.pagination}>
     {items.filter(item => item.type === "first" || item.type === "previous")
     .map((item, index) => (
-      <IconButton key={index} item={item} />
+      <IconButton
+        key={index}
+        item={item}
+        windowWidth={windowWidth}
+      />
     ))}
       <ul className={styles.innerPagination}>
       {items.filter(item => (
@@ -88,7 +121,11 @@ export default function Pagination({ count, page, onPageChange }: PaginationProp
       </ul>
     {items.filter(item => item.type === "next" || item.type === "last")
     .map((item, index) => (
-      <IconButton key={index} item={item} />
+      <IconButton
+        key={index}
+        item={item}
+        windowWidth={windowWidth}
+      />
     ))}
     </nav>
   )

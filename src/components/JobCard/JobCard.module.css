@@ -5,7 +5,7 @@
   padding: 24px;
   display: grid;
   grid-template-rows: auto auto auto;
-  grid-template-columns: fit-content 1fr max-content;
+  grid-template-columns: min-content 1fr max-content;
   grid-template-areas:
     "department department  link"
     "title      title       ."
@@ -47,7 +47,7 @@
 
 .location {
   grid-area: location;
-  width: fit-content;
+  width: min-content;
   margin-right: 24px;
 }
 

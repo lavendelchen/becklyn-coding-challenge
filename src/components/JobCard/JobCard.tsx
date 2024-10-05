@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./JobCard.module.css";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -31,7 +33,7 @@ export default function JobCard({
   locations,
   types
 }: JobCardProps) {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
