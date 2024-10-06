@@ -85,7 +85,7 @@ export default function Pagination({ count, page, onPageChange }: PaginationProp
           return (
             <li
               key={index}
-              className={`${styles.paginationItem} ${styles.centerItem}`}
+              className={styles.innerPaginationItem}
             >
               <button
                 className={`${selected ? styles.selected : ''}`}
@@ -100,7 +100,7 @@ export default function Pagination({ count, page, onPageChange }: PaginationProp
           return (
             <li
               key={index}
-              className={`${styles.paginationItem} ${styles.centerItem}`}
+              className={styles.innerPaginationItem}
             >
               <span>...</span>
             </li>

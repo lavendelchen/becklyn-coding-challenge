@@ -12,9 +12,9 @@
   display: flex;
 }
 
-button.paginationItem,
-.paginationItem.centerItem button,
-.paginationItem.centerItem span {
+.paginationItem,
+.innerPaginationItem button,
+.innerPaginationItem span {
   height: 40px;
   color: var(--gray-600);
   font: var(--text-sm-medium);
@@ -25,14 +25,14 @@ button.paginationItem,
   align-items: center;
 }
 
-button.paginationItem span,
-.paginationItem.centerItem button,
-.paginationItem.centerItem span {
+.paginationItem :global(.material-symbols-outlined),
+.innerPaginationItem button,
+.innerPaginationItem span {
   width: 40px;
   border-radius: 50%;
 }
 
-button.paginationItem span {
+.paginationItem :global(.material-symbols-outlined) {
   color: var(--gray-600);
   font-size: 20px;
   line-height: 20px;
@@ -42,20 +42,20 @@ button.paginationItem span {
   align-items: flex-start;
 }
 
-button.paginationItem:hover,
-button.paginationItem:hover span,
-.paginationItem.centerItem button:hover {
+.paginationItem:hover,
+.paginationItem:hover :global(.material-symbols-outlined),
+.innerPaginationItem button:hover {
   color: var(--gray-900);
   cursor: pointer;
 }
 
-button.paginationItem:disabled,
-button.paginationItem:disabled span {
+.paginationItem:disabled,
+.paginationItem:disabled :global(.material-symbols-outlined) {
   color: var(--gray-400);
   cursor: default;
 }
 
-.paginationItem.centerItem button.selected {
+.innerPaginationItem button.selected {
   background: var(--primary-75);
   color: var(--primary-600);
   cursor: default;
