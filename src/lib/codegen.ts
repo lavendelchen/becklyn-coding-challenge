@@ -11,7 +11,7 @@ const config: CodegenConfig = {
   schema: `${endpoint}?access_token=${accessToken}`,
   documents: "src/lib/query.ts",
   generates: {
-    [resolve(__dirname, '../types/graphql.ts')]: {
+    [resolve(__dirname, '../types/graphqlGenerated.ts')]: {
       plugins: [
         "typescript",
         "typescript-operations",
