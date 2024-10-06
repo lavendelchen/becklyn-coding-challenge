@@ -7,7 +7,7 @@ import {
   LinkIcon,
   LocationIcon,
   TypeIcon
-} from "./icons/icons";
+} from "../../icons/icons";
 
 interface JobCardProps {
   index: number;

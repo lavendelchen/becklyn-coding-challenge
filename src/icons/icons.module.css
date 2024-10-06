@@ -7,3 +7,8 @@
   fill: var(--gray-700);
   height: 18px;
 }
+
+.checkIcon {
+  fill: #3D8D9F;
+  width: 13px;
+}

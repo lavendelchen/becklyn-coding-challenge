@@ -62,6 +62,9 @@ span:global(.material-symbols-outlined) {
 
 .selectOption {
   padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
 }
 

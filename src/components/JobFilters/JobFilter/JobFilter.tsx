@@ -2,6 +2,7 @@ import styles from "./JobFilter.module.css";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { Select } from "@mui/base/Select";
 import { Option } from "@mui/base/Option";
+import { CheckIcon } from "@/icons/icons";
 
 type SelectRootSlotProps<TValue, Multiple> = {
   ownerState: any;
@@ -105,6 +106,10 @@ export default function JobFilter({
         onClick={handleOptionClick(option)}
       >
         {option}
+        {
+          option === value ?
+          <CheckIcon /> : ""
+        }
       </Option>
     ))}
     </Select>
