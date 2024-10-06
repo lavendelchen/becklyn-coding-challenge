@@ -49,9 +49,6 @@ export default function JobOverview() {
     { variables: jobsVariables }
   )
 
-  if (jobsQuery.error)
-    console.dir(jobsQuery.error, { depth: null, color: true})
-
   let currentJobCount = 0;
   let jobs: JobItems = [];
   let pagesCount = 0;
@@ -62,6 +59,19 @@ export default function JobOverview() {
     currentJobCount = jobsQuery.data.jobCollection.total;
     jobs = jobsQuery.data.jobCollection.items;
     pagesCount = Math.ceil(currentJobCount / PAGINATION_LIMIT);
+  }
+
+  const showJobsPlaceholder = (
+    (jobsQuery.loading || jobsQuery.error || currentJobCount <= 0) ?
+    true : false
+  )
+  const jobsPlaceholder = () => {
+    if (jobsQuery.loading)
+      return "Jobangebote werden geladen...";
+    else if (jobsQuery.error)
+      return jobsQuery.error.message;
+    else
+      return "Leider gibt es für Ihre Anfrage keine Jobangebote."
   }
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
@@ -99,8 +109,10 @@ export default function JobOverview() {
       </div>
       <div className={styles.jobOverviewBody}>
         <h2 className={styles.bodyHeading}>Aktuelle Jobangebote</h2>
-        {jobsQuery.loading ? (
-        <h3 className={styles.loading}>Jobangebote werden geladen...</h3>
+        {showJobsPlaceholder ? (
+        <h3 className={`${styles.jobsPlaceholder} ${jobsQuery.error ? styles.error : ""}`}>
+          {jobsPlaceholder()}
+        </h3>
         ) : (
         <ul className={styles.jobsList}>
         {jobs.map((job, index) => (

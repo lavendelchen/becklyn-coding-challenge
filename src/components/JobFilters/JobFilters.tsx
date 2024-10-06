@@ -56,7 +56,7 @@ export default function JobFilters({
     if (filterQuery.loading)
       return "Laden...";
     else if (filterQuery.error)
-      return "Error :(";
+      return "Error :/";
     else if (filterQuery.data)
       return filterName;
     else

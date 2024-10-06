@@ -29,14 +29,18 @@
   font: var(--display-sm-medium);
 }
 
-.loading, .jobsList {
+.jobsPlaceholder, .jobsList {
   margin-top: 24px;
 }
 
-.loading {
+.jobsPlaceholder {
   color: var(--gray-600);
   font: var(--text-lg-medium);
   text-align: center;
+}
+
+.error {
+  color: var(--tertiary);
 }
 
 .jobsList {
@@ -75,11 +79,11 @@
     font: var(--display-md-medium);
   }
 
-  .loading, .jobsList {
+  .jobsPlaceholder, .jobsList {
     margin-top: 32px;
   }
 
-  .loading {
+  .jobsPlaceholder {
     font: var(--text-xl-medium);
   }
 
