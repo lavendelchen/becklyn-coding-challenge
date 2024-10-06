@@ -55,7 +55,7 @@ export default function JobFilter({
 
   useEffect(() => {
     if (popupOpen) {
-      setPopupWidth(); // Set width when popup opens
+      setPopupWidth();
     }
     window.addEventListener('resize', setPopupWidth);
 
@@ -96,7 +96,6 @@ export default function JobFilter({
         },
         listbox: { className: styles.selectListbox },
       }}
-      // listboxOpen={true}
     >
     {options.map((option) => (
       <Option

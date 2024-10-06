@@ -21,6 +21,7 @@ import Pagination from "../Pagination/Pagination";
 const PAGINATION_LIMIT = 5;
 
 export default function JobOverview() {
+  const [totalJobCount, setTotalJobCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [department, setDepartment]   = useState<string | null>(null);
   const [city, setCity]               = useState<string | null>(null);
@@ -51,14 +52,16 @@ export default function JobOverview() {
   if (jobsQuery.error)
     console.dir(jobsQuery.error, { depth: null, color: true})
 
-  let jobCount = 0;
+  let currentJobCount = 0;
   let jobs: JobItems = [];
   let pagesCount = 0;
 
   if (jobsQuery.data?.jobCollection) {
-    jobCount = jobsQuery.data.jobCollection.total;
+    if (totalJobCount === 0)
+      setTotalJobCount(jobsQuery.data.jobCollection.total);
+    currentJobCount = jobsQuery.data.jobCollection.total;
     jobs = jobsQuery.data.jobCollection.items;
-    pagesCount = Math.ceil(jobCount / PAGINATION_LIMIT);
+    pagesCount = Math.ceil(currentJobCount / PAGINATION_LIMIT);
   }
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
@@ -83,7 +86,7 @@ export default function JobOverview() {
   return (
     <main>
       <div className={styles.jobOverviewHeader}>
-        <h5 className={styles.subHeading}>{jobCount} offene Stellen bei CreditPlus</h5>
+        <h5 className={styles.subHeading}>{totalJobCount} offene Stellen bei CreditPlus</h5>
         <h1 className={styles.heading}>Hier beginnt deine Zukunft</h1>
         <JobFilters
           values={{
