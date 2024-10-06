@@ -21,7 +21,7 @@
   color: var(--gray-500);
 }
 
-.select:hover:global(:not(.base--disabled)) {
+.select:hover:not(:global(.base--disabled)):not(:global(.base--expanded)):not(:focus) {
   border-color: #838383;
   color: var(--gray-900);
 }
